@@ -1,3 +1,4 @@
+import {Helper} from './helper'
 
 const noop = () => {}
 function $(field) {return document.getElementById(field)}
@@ -223,7 +224,6 @@ export class View {
         }
     }
 
-
     addMonthsToList(element) {
         let month = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
         let monthDropdown = $(element)
@@ -252,117 +252,40 @@ export class View {
         }
     }
 
-    //TODO: for each loop / maybe better variable names
-   autoCalculate() {
-        let consumptionRateInputElementsSummerHT = document.getElementsByClassName('consumptionRateInputSummerHT');
-        let consumptionRateInputElementsSummerNT = document.getElementsByClassName('consumptionRateInputSummerNT');
-        let consumptionRateInputElementsWinterHT = document.getElementsByClassName('consumptionRateInputWinterHT');
-        let consumptionRateInputElementsWinterNT = document.getElementsByClassName('consumptionRateInputWinterNT');
+   //  TODO: for each loop / maybe better variable names?
+    autoCalculate() {
+        let consumptionRateInputElements = document.getElementsByClassName('consumptionRateInput');
 
-        function add(p1, p2){
-            let result = parseFloat(p1) + parseFloat(p2);
-            return result
-        }
-
-                   // for (var consumptionRateInputElement in consumptionRateInputElements) {
-                   //     consumptionRateInputElements[consumptionRateInputElement].addEventListener('change', () => {
-
-        for (let consumptionRateInputElementSummerHT = 0; consumptionRateInputElementSummerHT < consumptionRateInputElementsSummerHT.length; consumptionRateInputElementSummerHT++) {
-            consumptionRateInputElementsSummerHT[consumptionRateInputElementSummerHT].addEventListener('change', () => {
+        for (let consumptionRateInputElement = 0; consumptionRateInputElement < consumptionRateInputElements.length; consumptionRateInputElement++) {
+            consumptionRateInputElements[consumptionRateInputElement].addEventListener('change', () => {
 
                 let summerEnergyHT = $("summerEnergyHT").value;
                 let summerNetHT = $("summerNetHT").value;
-
-                let additionEnergyNetSummerHTResult = add(summerEnergyHT, summerNetHT)
-
-                $("totalSummerHT").innerText = additionEnergyNetSummerHTResult;
-                this[onAddSummerHighTariff](additionEnergyNetSummerHTResult)
-            })
-        }
-
-        for (let consumptionRateInputElementSummerNT = 0; consumptionRateInputElementSummerNT < consumptionRateInputElementsSummerHT.length; consumptionRateInputElementSummerNT++) {
-            consumptionRateInputElementsSummerNT[consumptionRateInputElementSummerNT].addEventListener('change', () => {
-
                 let summerEnergyNT = $("summerEnergyNT").value;
                 let summerNetNT = $("summerNetNT").value;
-
-                let additionEnergyNetSummerNTResult = add(summerEnergyNT, summerNetNT)
-
-                $("totalSummerNT").innerText = additionEnergyNetSummerNTResult;
-                this[onAddSummerLowTariff](additionEnergyNetSummerNTResult)
-
-            })
-        }
-
-        for (let consumptionRateInputElementWinterHT = 0; consumptionRateInputElementWinterHT < consumptionRateInputElementsSummerHT.length; consumptionRateInputElementWinterHT++) {
-            consumptionRateInputElementsWinterHT[consumptionRateInputElementWinterHT].addEventListener('change', () => {
-
                 let winterEnergyHT = $("winterEnergyHT").value;
                 let winterNetHT = $("winterNetHT").value;
-
-                let additionEnergyNetWinterHTResult = add(winterEnergyHT, winterNetHT)
-
-                $("totalWinterHT").innerText = additionEnergyNetWinterHTResult;
-                this[onAddWinterHighTariff](additionEnergyNetWinterHTResult)
-
-            })
-        }
-
-        for (let consumptionRateInputElementWinterNT = 0; consumptionRateInputElementWinterNT < consumptionRateInputElementsSummerHT.length; consumptionRateInputElementWinterNT++) {
-            consumptionRateInputElementsWinterNT[consumptionRateInputElementWinterNT].addEventListener('change', () => {
-
                 let winterEnergyNT = $("winterEnergyNT").value;
                 let winterNetNT = $("winterNetNT").value;
 
-                let additionEnergyNetWinterNTResult = add(winterEnergyNT, winterNetNT)
+                let helper = new Helper()
 
+                let additionEnergyNetSummerHTResult = helper.add(summerEnergyHT, summerNetHT)
+                let additionEnergyNetSummerNTResult = helper.add(summerEnergyNT, summerNetNT)
+                let additionEnergyNetWinterHTResult = helper.add(winterEnergyHT, winterNetHT)
+                let additionEnergyNetWinterNTResult = helper.add(winterEnergyNT, winterNetNT)
+
+                $("totalSummerHT").innerText = additionEnergyNetSummerHTResult;
+                this[onAddSummerHighTariff](additionEnergyNetSummerHTResult)
+                $("totalSummerNT").innerText = additionEnergyNetSummerNTResult;
+                this[onAddSummerLowTariff](additionEnergyNetSummerNTResult)
+                $("totalWinterHT").innerText = additionEnergyNetWinterHTResult;
+                this[onAddWinterHighTariff](additionEnergyNetWinterHTResult)
                 $("totalWinterNT").innerText = additionEnergyNetWinterNTResult;
                 this[onAddWinterLowTariff](additionEnergyNetWinterNTResult)
             })
         }
     }
-
-
-
-    // autoCalculate() {
-    //     let consumptionRateInputElements = document.getElementsByClassName('consumptionRateInput');
-    //
-    //     for (let consumptionRateInputElement = 0; consumptionRateInputElement < consumptionRateInputElements.length; consumptionRateInputElement++) {
-    //         consumptionRateInputElements[consumptionRateInputElement].addEventListener('change', () => {
-    //
-    //             // for (var consumptionRateInputElement in consumptionRateInputElements) {
-    //             //     consumptionRateInputElements[consumptionRateInputElement].addEventListener('change', () => {
-    //
-    //             let summerEnergyHT = $("summerEnergyHT").value;
-    //             let summerNetHT = $("summerNetHT").value;
-    //             let summerEnergyNT = $("summerEnergyNT").value;
-    //             let summerNetNT = $("summerNetNT").value;
-    //             let winterEnergyHT = $("winterEnergyHT").value;
-    //             let winterNetHT = $("winterNetHT").value;
-    //             let winterEnergyNT = $("winterEnergyNT").value;
-    //             let winterNetNT = $("winterNetNT").value;
-    //
-    //             function add(p1, p2){
-    //                 let result = parseFloat(p1) + parseFloat(p2);
-    //                 return result
-    //             }
-    //
-    //             let additionEnergyNetSummerHTResult = add(summerEnergyHT, summerNetHT)
-    //             let additionEnergyNetSummerNTResult = add(summerEnergyNT, summerNetNT)
-    //             let additionEnergyNetWinterHTResult = add(winterEnergyHT, winterNetHT)
-    //             let additionEnergyNetWinterNTResult = add(winterEnergyNT, winterNetNT)
-    //
-    //             $("totalSummerHT").innerText = additionEnergyNetSummerHTResult;
-    //             this[onAddSummerHighTariff](additionEnergyNetSummerHTResult)
-    //             $("totalSummerNT").innerText = additionEnergyNetSummerNTResult;
-    //             this[onAddSummerLowTariff](additionEnergyNetSummerNTResult)
-    //             $("totalWinterHT").innerText = additionEnergyNetWinterHTResult;
-    //             this[onAddWinterHighTariff](additionEnergyNetWinterHTResult)
-    //             $("totalWinterNT").innerText = additionEnergyNetWinterNTResult;
-    //             this[onAddWinterLowTariff](additionEnergyNetWinterNTResult)
-    //         })
-    //     }
-    // }
 
 
 
@@ -545,6 +468,7 @@ export class View {
         $('ht_start_saturday_winter').addEventListener('change', ({target}) => {
             this[onAddWinterSaturdayStart](Number(target.value))
         })
+
         $('ht_end_saturday_winter').addEventListener('change', ({target}) => {
             this[onAddWinterSaturdayEnd](Number(target.value))
         })
