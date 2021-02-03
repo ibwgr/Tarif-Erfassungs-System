@@ -71,4 +71,20 @@ describe('Index', () => {
             await assert.strictEqual(await page.totalWinterHTField().getText(),'12')
         })
     })
+
+    describe('click winterTariffsCheck, set winterEnergyHTField + winterNetHTField and generate table', ()=>{
+
+        it('should return value from generated table', async () => {
+            await page.winterTariffsCheckBoxField().click()
+
+            await driver.wait(until.elementsLocated(page.winterEnergyHTSelector()))
+
+            await page.winterEnergyHTField().sendKeys('8.4')
+            await page.winterNetHTField().sendKeys('11.7')
+            await page.winterNetHTField().sendKeys(Key.ENTER)
+
+            await assert.strictEqual(await page.checkGeneratedSelectorSpecific().getText(),'20.1')
+
+        })
+    })
 })
