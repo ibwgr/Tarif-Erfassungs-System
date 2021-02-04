@@ -97,4 +97,8 @@ export default class Index{
     totalWinterHTField(){
         return this.driver.findElement(this.totalWinterHTSelector())
     }
+
+    checkGeneratedSelectorSpecific(){
+        return this.driver.findElement(By.xpath(`//table[@id="winterTable"]/tbody[1]/tr[1]/td[1]`))
+    }
 }
