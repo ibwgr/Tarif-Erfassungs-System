@@ -55,8 +55,8 @@ describe('LEA Settings API', function() {
             it('first product should have a operator of type Operator', function () {
                 assert.strictEqual(typeof (products[0].operator), typeof new Operator())
             })
-            it('should return a list with 3 objects', async function () {
-                assert.strictEqual(products.length, 3)
+            it('should return a list with 10 objects', async function () {
+                assert.strictEqual(products.length, 10)
             })
         })
         describe('get for non-existing operator', function () {
