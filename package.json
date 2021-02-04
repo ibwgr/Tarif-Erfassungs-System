@@ -9,7 +9,7 @@
     "build": "NODE_ENV=production rm -rf dist && rm -rf .cache && ./node_modules/.bin/parcel build src/app/index.html --no-source-maps",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "mocha src/test/unit/**.js",
-    "test:e2e": "mocha src/test/e2e/**.js"
+    "test:e2e": "mocha --timeout 5000 src/test/e2e/**.js"
   },
   "browserslist": [
     "last 2 chrome versions"
