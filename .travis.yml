@@ -1,7 +1,7 @@
 dist: trusty
 language: node_js
 node_js:
-  - "15"
+  - "14"
 addons:
   apt:
     packages:
