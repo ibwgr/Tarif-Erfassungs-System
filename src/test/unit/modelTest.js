@@ -87,6 +87,7 @@ describe('Model', function() {
             tariff = new Tariff(2020, 0, 10000, 5.0, 4.5, 12.3, winterTariff, summerTariff, 1, 12.34)
             product = new Product(1, operator, "whatever", tariff)
         })
+
         describe('toSwissJSON', function () {
             it('should contain a list with 15 fields', function () {
                 assert.equal(Object.keys(product.toSwissJSON(true)).length, 15);

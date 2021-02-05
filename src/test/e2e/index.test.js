@@ -28,16 +28,9 @@ describe('Index', () => {
             await driver.wait(until.elementLocated(page.specificOperatorSelector(301)))
 
             await page.specificOperatorField(301).click()
-            await driver.takeScreenshot().then((image, err) => {
-                fs.writeFile(
-                    'screenshot.png',
-                    image,
-                    'base64',
-                    (err) => console.log(err)
-                )
-            })
-            assert.strictEqual(await page.operatorElcomField().getText(), '7')
+
         })
+
         it('should render VSE Id number on vse field', async () => {
             await driver.wait(until.elementLocated(page.specificOperatorSelector(301)))
 
