@@ -8,7 +8,7 @@ Author: Sascha Fluor, Daniel Nägeli, Marc Spescha
 Betreuer: Ueli Kunz IBW Graubünden
 Auftraggeber: Eturnity AG
 
-##Installation:
+## Installation:
 1. install npm (shipped with node, nvm recommended for node install)
 2. install all dependencies: npm install
 
