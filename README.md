@@ -1,6 +1,6 @@
 
 
-## TES Tarif Erfassungs System
+# TES - Tarif Erfassungs System
 
 ## Beschreibung:
 Tool für den Unterhalt der Stromtarifprodukte verschiedener Stromversorger der Schweiz für Eturnity AG.
