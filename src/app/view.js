@@ -360,7 +360,6 @@ export class View {
         return this.eventHandlers[events.onClickSubmitButton]()
     }
 
-
     calculateSummerHTTotal() {
         let summerEnergyHT = $("summerEnergyHT").value;
         let summerNetHT = $("summerNetHT").value;
@@ -404,6 +403,7 @@ export class View {
                 return false;
             }
         })
+
         $("resetButton").addEventListener('click', () => window.location.reload(false))
         $("summerEnergyHT").addEventListener('change', () => this.calculateSummerHTTotal())
         $("summerNetHT").addEventListener('change', () => this.calculateSummerHTTotal())
@@ -413,7 +413,6 @@ export class View {
         $("winterNetHT").addEventListener('change', () => this.calculateWinterHTTotal())
         $("winterEnergyNT").addEventListener('change', () => this.calculateWinterNTTotal())
         $("winterNetNT").addEventListener('change', () => this.calculateWinterNTTotal())
-
         $("winterTariffsCheck").addEventListener('change', ({target}) => {
             let winterTariffSelected
             if (target.checked) {
@@ -430,78 +429,61 @@ export class View {
             }
             this[onSelectWinterTimes](winterTariffSelected)
         })
-
         $("submitButton").addEventListener('click', ({tagert}) => {
             this[onClickSubmitButton]()
         })
-      
         $("energieversoger").addEventListener('change', ({target}) => {
             let operatorId = Number(target.options[target.selectedIndex].value)
             this[onAddOperator](operatorId)
         })
-
         $('name').addEventListener('change', ({target}) => {
             let productName = target.value
             this[onAddProductName](productName)
         })
-
         $('year').addEventListener('change', ({target}) => {
             let tariffYear = Number(target.options[target.selectedIndex].value)
             this[onAddTariffYear](tariffYear)
         })
-
         $('basic_fee_monthly').addEventListener('change', ({target}) => {
             let basicFeeMonthly = Number(target.value)
             this[onAddBasicFeeMonthly](basicFeeMonthly)
         })
-
         $('gridPeakPowerTariff').addEventListener('change', ({target}) => {
             let gridPeakPowerTariff = Number(target.value)
             this[onAddGridPeakPowerTariff](gridPeakPowerTariff)
         })
-
         $('valid_from_kwp').addEventListener('change', ({target}) => {
             let validFromKwh = Number(target.value)
             this[onAddValidFromKwh](validFromKwh)
         })
-
         $('valid_to_kwp').addEventListener('change', ({target}) => {
             let validToKwh = Number(target.value)
             this[onAddValidToKwh](validToKwh)
         })
-
         $('verbrauchertyp').addEventListener('change', ({target}) => {
             this[onAddConsumerType](Number(target.options[target.selectedIndex].value))
         })
-
         $('municipality_fee').addEventListener('change', ({target}) => {
             this[onAddMunicipalityFee](Number(target.value))
         })
-
         $('is_default').addEventListener('change', ({target}) => {
             this[onAddIsDefault](Number(target.options[target.selectedIndex].value))
         })
-
         $('kev').addEventListener('change', ({target}) => {
             this[onAddKevTax](Number(target.value))
         })
-
         $('sommerbeginn').addEventListener('change', ({target}) => {
             this[onAddSummerStart](Number(target.options[target.selectedIndex].value))
         })
-
         $('sommerende').addEventListener('change', ({target}) => {
             this[onAddSummerEnd](Number(target.options[target.selectedIndex].value))
         })
-
         $('ht_start_monday_summer').addEventListener('change', ({target}) => {
             this[onAddSummerMondayStart](Number(target.value))
         })
-
         $('ht_end_monday_summer').addEventListener('change', ({target}) => {
             this[onAddSummerMondayEnd](Number(target.value))
         })
-
         $('ht_start_saturday_summer').addEventListener('change', ({target}) => {
             this[onAddSummerSaturdayStart](Number(target.value))
         })
@@ -517,11 +499,9 @@ export class View {
         $('ht_start_monday_winter').addEventListener('change', ({target}) => {
             this[onAddWinterMondayStart](Number(target.value))
         })
-
         $('ht_end_monday_winter').addEventListener('change', ({target}) => {
             this[onAddWinterMondayEnd](Number(target.value))
         })
-
         $('ht_start_saturday_winter').addEventListener('change', ({target}) => {
             this[onAddWinterSaturdayStart](Number(target.value))
         })

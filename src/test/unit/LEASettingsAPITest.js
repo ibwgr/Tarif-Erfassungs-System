@@ -3,7 +3,6 @@ import {describe, it, beforeEach, after} from 'mocha'
 import {LEASettingsAPI} from "../../app/LEASettingsAPI.js";
 import {Operator} from "../../app/model.js";
 
-//TODO redo this
 describe('LEA Settings API', function() {
     describe('loadOperators', function () {
         let api
@@ -34,6 +33,7 @@ describe('LEA Settings API', function() {
             })
         })
     })
+
     describe('getProductsFromOperator', function () {
         describe('get for operator 1', function () {
             let api
@@ -55,10 +55,11 @@ describe('LEA Settings API', function() {
             it('first product should have a operator of type Operator', function () {
                 assert.strictEqual(typeof (products[0].operator), typeof new Operator())
             })
-            it('should return a list with 3 objects', async function () {
-                assert.strictEqual(products.length, 3)
+            it('should return a list with 10 objects', async function () {
+                assert.strictEqual(products.length, 10)
             })
         })
+
         describe('get for non-existing operator', function () {
             it('should return a empty list', async function () {
                 let api = new LEASettingsAPI('https://ep-dev-03.eturnity.ch')
