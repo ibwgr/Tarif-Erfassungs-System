@@ -1,4 +1,4 @@
-#TES
+TES
 Tarif Erfassungs System
 
 Beschreibung:
