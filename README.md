@@ -4,8 +4,11 @@
 
 ## Beschreibung:
 Tool für den Unterhalt der Stromtarifprodukte verschiedener Stromversorger der Schweiz für Eturnity AG.
-Author: Sascha Fluor, Daniel Nägeli, Marc Spescha 
+
+Author: Sascha Fluor, Daniel Nägeli, Marc Spescha
+
 Betreuer: Ueli Kunz IBW Graubünden
+
 Auftraggeber: Eturnity AG
 
 ## Installation:
