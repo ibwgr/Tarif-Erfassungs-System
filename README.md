@@ -1,26 +1,27 @@
-TES
-Tarif Erfassungs System
 
-Beschreibung:
+
+## TES Tarif Erfassungs System
+
+## Beschreibung:
 Tool für den Unterhalt der Stromtarifprodukte verschiedener Stromversorger der Schweiz für Eturnity AG.
 Author: Sascha Fluor, Daniel Nägeli, Marc Spescha 
 Betreuer: Ueli Kunz IBW Graubünden
 Auftraggeber: Eturnity AG
 
-Installation:
+##Installation:
 1. install npm (shipped with node, nvm recommended for node install)
 2. install all dependencies: npm install
 
-Test:
+## Test:
 npm run test:unit
 npm run test:e2e (npm run dev must be active)
 
-Betrieb:
+## Betrieb:
 Run Productive:
 npm run start
 
 Run development:
 npm run dev
 
-Demo:
+## Demo:
 https://tarif-erfassungs-system.vercel.app/
