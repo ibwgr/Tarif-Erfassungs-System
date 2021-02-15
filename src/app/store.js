@@ -31,11 +31,7 @@ export class Store {
     }
 
     setWinterTariffSelected(winterTariffSelected) {
-        if (winterTariffSelected === false) {
-            this.winterTariffSelected = false
-        } else {
-            this.winterTariffSelected = true
-        }
+        this.winterTariffSelected = winterTariffSelected
     }
 
     async loadOperators() {
